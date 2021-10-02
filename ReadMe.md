@@ -2,8 +2,8 @@
 
 [Banggood AOQDQDQD ESP8266 Weather Station Kit](https://www.banggood.com/AOQDQDQD-ESP8266-Weather-Station-Kit-with-Temperature-Humidity-Atmosphetic-Pressure-Light-Sensor-0_96-Display-for-Arduino-IDE-IoT-Starter-p-1751604.html) 
 
-Uses libraries from Adafruit, Adi Dax, Sparkfun, Christopher Laws and various individual contributers to the arguino
-labrary ecosystem
+Uses libraries from Adafruit, Adi Dax, Sparkfun, Christopher Laws and various individual contributers to the arduino
+library ecosystem
 
 Libraries
 - DHT11 - [https://github.com/adafruit/DHT-sensor-library](https://github.com/adafruit/DHT-sensor-library)
