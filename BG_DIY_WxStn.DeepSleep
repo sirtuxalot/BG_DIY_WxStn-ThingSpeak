@@ -48,7 +48,7 @@ SFE_BMP180 pressure;                   // name for BMP180
 BH1750 lightMeter;                     // name for BH1750 (AKA GY-30)
 const char* ssid = "XXXXXXXXXX";       // SSID of wireless network
 const char* password = "XXXXXXXXXX";   // Password for wireless network
-WiFiServer espServer(80);              // HTTP port
+WiFiClient client;                     // use as wifi client
 IPAddress ip(192, 168, 254, 128);      // IP address of device
 IPAddress gateway(192, 168, 254, 1);   // Gateway IP address
 IPAddress subnet(255, 255, 255, 0);    // Network Subnet Mask
@@ -61,7 +61,6 @@ float humid = 0;
 float pres = 0;
 int light = 0;
 unsigned long LastEntry;
-int Delay = 5000;
 int RainSensorValue = 0;
 
 void setup() {
