@@ -1,22 +1,8 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-BG_WxStn.ino
-
-Banggood "AOQDQDQD ESP8266 Weather Station Kit with Temperature Humidity Atmosphetic Pressure Light Sensor 0.96 Display
-for Arduino IDE IoT Starter" 
-
-Uses libraries from Adafruit, Adi Dax, Sparkfun, Christopher Laws and various individual contributers to the arguino
-labrary ecosystem
-
-Original wifi example file by pileofstuff.ca
-
-Git repo with semi-useful info, that was added to source folder
-https://github.com/GJKJ/WSKS
-
-Revisions:
-11 July 2021: Code clean-up due to my OCD
-26 August 2021: First working sketch
-
+BG_DIY_WxStn.ino 
+Author: G. J. Yeomans
+Last Update: 26 November 2021
+Notes: BASE WORKING FILE
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define DEBUG 0
@@ -45,6 +31,7 @@ DHT dht(DHTPIN, DHTTYPE);              // initialize DHT11 sensor
 #define ALTITUDE 171.0                 // Altitude of Lock Haven, PA in meters
 SFE_BMP180 pressure;                   // name for BMP180 
 BH1750 lightMeter;                     // name for BH1750 (AKA GY-30)
+#define RainSensor A0                  // pin for LM393 Rain Sensor
 const char* ssid = "XXXXXXXXXX";       // SSID of wireless network
 const char* password = "XXXXXXXXXX";   // Password for wireless network
 WiFiServer espServer(80);              // HTTP port
@@ -113,6 +100,23 @@ void loop() {
   }
   // Compute heat index in Fahrenheit (the default)
   float hif = dht.computeHeatIndex(temp, humid);
+  debug("heat index: ");
+  debug(hif);
+  debugln();
+
+  // read LM393 Rain Sensor
+  RainSensorValue = analogRead(RainSensor);
+  debug("moisture: ");
+  if (RainSensorValue <= 100) {
+    debug("Heavy Rain - ");
+    if (RainSensorValue > 100 and RainSensorValue <= 400) {
+      debug("Raining - ");
+      if (RainSensorValue > 400 and RainSensorValue <= 800) {
+        debug("Light Rain - ");
+      }
+    }
+  }
+  debug(RainSensorValue);
 
   // read BMP180 sensor (we could optinally use this for temperature)
   char status;
@@ -245,6 +249,7 @@ void loop() {
   client.println("<head>");
   client.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
   client.println("<link rel=\"icon\" href=\"data:,\">");
+
   /* CSS Styling for Buttons and Web Page */
   client.println("<style>");
   client.println("html { font-family: Courier New; display: inline-block; margin: 0px auto; text-align: center;}");
@@ -259,6 +264,10 @@ void loop() {
   client.println(temp);
   client.print("<p>Humidity: </p>");
   client.println(humid);
+  client.print("<p>Heat Index: </p>");
+  client.println(hif);
+  client.print("<p>Moisture: </p>");
+  client.println(RainSensorValue);   
   client.print("<p>Pressure:  </p>");
   client.println(pres,2);
   client.print("<p>Light: </p>");
