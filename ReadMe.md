@@ -14,6 +14,9 @@ Common Downloaded Libraries
 ArduinoJson Branch Libaries
 - ArduinoJSON - [https://github.com/bblanchon/ArduinoJson.git](https://github.com/bblanchon/ArduinoJson.git)
 
+ThingSpeak Branch Libraries
+- ThingSpeak - [https://github.com/mathworks/thingspeak-arduino](https://github.com/mathworks/thingspeak-arduino)
+
 Original wifi example file by pileofstuff.ca, his [Youtube video](https://www.youtube.com/watch?v=G_dTu2_HSjk) and his original [files](https://pileofstuff.ca/project_files/banggood_weather_station_kit/)
 
 Another [Youtube video](https://www.youtube.com/watch?v=ONFXzi4LSHk) but backofficeshow of the kit, but no code was offered that I could find.
