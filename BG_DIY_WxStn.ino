@@ -1,8 +1,8 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 BG_DIY_WxStn.ino 
 Author: G. J. Yeomans
-Last Update: 26 November 2021
-Notes: BASE WORKING FILE
+Last Update: 22 Dec 2021
+Notes: Standardize format of sketch constants
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define DEBUG 0
@@ -25,15 +25,15 @@ Notes: BASE WORKING FILE
 
 // Defines
 
-#define DHTPIN 14                      // pin for DHT11
-#define DHTTYPE DHT11                  // name for DHT11
+const int DHTPIN {14};                 // pin for DHT11
+const char DHTTYPE {DHT11};            // name for DHT11
 DHT dht(DHTPIN, DHTTYPE);              // initialize DHT11 sensor
-#define ALTITUDE 171.0                 // Altitude of Lock Haven, PA in meters
+const char RainSensor {A0};            // pin for LM393 Rain Sensor
+const float ALTITUDE {171.0};          // Altitude of Lock Haven, PA in meters
 SFE_BMP180 pressure;                   // name for BMP180 
 BH1750 lightMeter;                     // name for BH1750 (AKA GY-30)
-#define RainSensor A0                  // pin for LM393 Rain Sensor
-const char* ssid = "XXXXXXXXXX";       // SSID of wireless network
-const char* password = "XXXXXXXXXX";   // Password for wireless network
+const char* ssid {"XXXXXXXXXX"};       // SSID of wireless network
+const char* password {"XXXXXXXXXX"};   // Password for wireless network
 WiFiServer espServer(80);              // HTTP port
 IPAddress ip(192, 168, X, X);          // IP address of device
 IPAddress gateway(192, 168, X, 1);     // Gateway IP address
