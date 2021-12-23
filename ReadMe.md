@@ -4,13 +4,13 @@
 with the LM393 Rain Sensor and SI1145 UV Sensor included.
 
 Branches
-*master*: Intended to be starter code for original kit (w/o LCD screen) for external data collection
-*ArduinoJson*: Includes LM393 and SI1145 and provides JSON output using ArduinoJson library
-*DeepSleep*: Includes LM393 and SI1145 and utilizes ESP8266 DeepSleep functionality and only outputs to console.  This
+- *master*: Intended to be starter code for original kit (w/o LCD screen) for external data collection
+- *ArduinoJson*: Includes LM393 and SI1145 and provides JSON output using ArduinoJson library
+- *DeepSleep*: Includes LM393 and SI1145 and utilizes ESP8266 DeepSleep functionality and only outputs to console.  This
 will be the base of the upcoming MQTT branch which will send data influxdb/grafana server.
-*MQTT*: **FUTURE BRANCH** starting from *DeepSleep* branch
-*StringJson*: Predecessor to *ArduinoJson* code and performs the same function using normal string functions.
-*ThingSpeak*: Written at the request of another individual and only includes the LM393 rain sensor.  Data collection works
+- *MQTT*: **FUTURE BRANCH** starting from *DeepSleep* branch
+- *StringJson*: Predecessor to *ArduinoJson* code and performs the same function using normal string functions.
+- *ThingSpeak*: Written at the request of another individual and only includes the LM393 rain sensor.  Data collection works
 but ThingSpeak data transfer has not been tested.
 
 ***The power portion of the circuit has not been tested.***
