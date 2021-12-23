@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 BG_DIY_WxStn.ino 
-Author: G. J. Yeomans
+Author: sirtuxalot@gmail.com
 Last Update: 22 Dec 2021
 Notes: Standardize format of sketch constants
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -28,7 +28,6 @@ Notes: Standardize format of sketch constants
 const int DHTPIN {14};                 // pin for DHT11
 const char DHTTYPE {DHT11};            // name for DHT11
 DHT dht(DHTPIN, DHTTYPE);              // initialize DHT11 sensor
-const char RainSensor {A0};            // pin for LM393 Rain Sensor
 const float ALTITUDE {171.0};          // Altitude of Lock Haven, PA in meters
 SFE_BMP180 pressure;                   // name for BMP180 
 BH1750 lightMeter;                     // name for BH1750 (AKA GY-30)
@@ -103,20 +102,6 @@ void loop() {
   debug("heat index: ");
   debug(hif);
   debugln();
-
-  // read LM393 Rain Sensor
-  RainSensorValue = analogRead(RainSensor);
-  debug("moisture: ");
-  if (RainSensorValue <= 100) {
-    debug("Heavy Rain - ");
-    if (RainSensorValue > 100 and RainSensorValue <= 400) {
-      debug("Raining - ");
-      if (RainSensorValue > 400 and RainSensorValue <= 800) {
-        debug("Light Rain - ");
-      }
-    }
-  }
-  debug(RainSensorValue);
 
   // read BMP180 sensor (we could optinally use this for temperature)
   char status;
@@ -266,8 +251,6 @@ void loop() {
   client.println(humid);
   client.print("<p>Heat Index: </p>");
   client.println(hif);
-  client.print("<p>Moisture: </p>");
-  client.println(RainSensorValue);   
   client.print("<p>Pressure:  </p>");
   client.println(pres,2);
   client.print("<p>Light: </p>");
