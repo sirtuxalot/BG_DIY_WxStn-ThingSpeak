@@ -24,7 +24,7 @@ Common Downloaded Libraries
 - BH1750 (AKA GY-30) - [https://github.com/claws/BH1750.git](https://github.com/claws/BH1750.git)
 - SI1145 - [https://github.com/adafruit/Adafruit_SI1145_Library](https://github.com/adafruit/Adafruit_SI1145_Library.git)
 - ESP8266 [https://github.com/esp8266/Arduino](https://github.com/esp8266/Arduino.git)
-- WiFiManager [https://github.com/tzapu/WiFiManager](https://github.com/tzapu/WiFiManager.git) : [Demo Youtube Video](https://www.youtube.com/watch?v=Errh7LEEug0)
+- WiFiManager [https://github.com/tzapu/WiFiManager](https://github.com/tzapu/WiFiManager.git) : [Demo Youtube Video](https://www.youtube.com/watch?v=Errh7LEEug0) or [Another Demo Youtube Video](https://www.youtube.com/watch?v=VnfX9YJbaU8)
 
 ArduinoJson Branch Libaries
 - ArduinoJSON - [https://github.com/bblanchon/ArduinoJson.git](https://github.com/bblanchon/ArduinoJson.git)
