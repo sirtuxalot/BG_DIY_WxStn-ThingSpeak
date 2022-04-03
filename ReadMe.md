@@ -12,6 +12,7 @@ will be the base of the upcoming MQTT branch which will send data influxdb/grafa
 - *StringJson*: Predecessor to *ArduinoJson* code and performs the same function using normal string functions.
 - *ThingSpeak*: Written at the request of another individual and only includes the LM393 rain sensor.  Data collection works
 but ThingSpeak data transfer has not been tested.
+- *WifiManager*: Copy of master branch to test setup of the WiFiManager library to remove need to hard code WIFI settings
 
 ***The power portion of the circuit has not been tested.***
 
