@@ -16,58 +16,36 @@ I give no guarantees or warranties with this code. It might not even work...
 
 
 //common library for all I2C stuff
-
 #include <Wire.h>
 
 // library  for DHT11
-
 #include <dht11.h>
 
 // library  for BMP180
-
 #include <SFE_BMP180.h>
 
-
 // library  for  BH1750 (AKA GY-30)
-
-
 #include <BH1750.h>
 
-
 // library for web server
-
 #include <ESP8266WiFi.h>
 
-
-
 //defines for DHT11
-
-
 #define DHT11PIN 2
-
 dht11 DHT11;
 
 //define for BMP180
-
 SFE_BMP180 pressure;
 
-
 // define for BH1750 (AKA GY-30)
-
 BH1750 lightMeter;
 
-
 // defines for web server
-
-
 const char* ssid = "***CHANGE_THIS***"; /* Add your router's SSID */
 const char* password = "***CHANGE_THIS***"; /*Add the password */
 
 WiFiServer espServer(80); /* Instance of WiFiServer with port number 80 */
 /* 80 is the Port Number for HTTP Web Server */
-
-
-
 
 // variables for sensors
 
@@ -76,23 +54,15 @@ float humid = 0;
 float pres = 0;
 int light = 0;
 
-
-
 void setup() {
 
-
   //for BMP180
-
   pressure.begin();
 
-
   //  for BH1750 (AKA GY-30)
-
   lightMeter.begin();
 
   //for web server
-
-  
   Serial.begin(115200); /* Begin Serial Communication with 115200 Baud Rate */
   
   Serial.print("\n");
@@ -123,18 +93,14 @@ void setup() {
 
 void loop() {
 
-
   //read sensors
 
   //DHT11
-
   int chk = DHT11.read(DHT11PIN);
   temp = ((float)DHT11.temperature);
   humid = DHT11.humidity;
 
   //BMP180  (we could optinally use this for temperature)
-
-
   double T, P, p0, a;
   pressure.startTemperature();
   pressure.getTemperature(T);
@@ -143,16 +109,11 @@ void loop() {
   pres = P;
 
   //  BH1750
-
   float light = lightMeter.readLightLevel();
 
-  
-
   //web server stuff
-
- WiFiClient client = espServer.available(); /* Check if a client is available */
-  if(!client)
-  {
+  WiFiClient client = espServer.available(); /* Check if a client is available */
+  if(!client) {
     return;
   }
 
@@ -168,9 +129,7 @@ void loop() {
   /* CSS Styling for Buttons and Web Page */
   client.println("<style>");
   client.println("html { font-family: Courier New; display: inline-block; margin: 0px auto; text-align: center;}");
- 
   client.println("text-decoration: none; font-size: 25px; margin: 2px; cursor: pointer;}");
-  
   client.println("</style>");
   client.println("</head>");
   
@@ -179,15 +138,13 @@ void loop() {
   client.println("<h2>yer basic weather station</h2>");
   
   client.print("<p>Temperature: </p>");
-   client.println(temp);
+  client.println(temp);
 
-   client.print("<p>Humidity: </p>");
-   client.println(humid);
-   client.print("<p>Pressure:  </p>");
-   client.println(pres);
-   client.print("<p>Light: </p>");
-   client.println(light);
-  
-
+  client.print("<p>Humidity: </p>");
+  client.println(humid);
+  client.print("<p>Pressure:  </p>");
+  client.println(pres);
+  client.print("<p>Light: </p>");
+  client.println(light);
 
 }
