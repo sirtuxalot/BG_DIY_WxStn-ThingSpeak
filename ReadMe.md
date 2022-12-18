@@ -5,19 +5,17 @@ with the LM393 Rain Sensor and SI1145 UV Sensor included.
 
 Branches
 - *master*: Intended to be starter code for original kit (w/o LCD screen) for external data collection
-- *ArduinoJson*: Includes LM393 and SI1145 and provides JSON output using ArduinoJson library
+- *ArduinoJson*: Includes LM393 and SI1145 and provides JSON output using ArduinoJson library ***Kept only for reference, won't be used in final project***
+- *InfluxDB*: Intended destination of project
 - *DeepSleep*: Includes LM393 and SI1145 and utilizes ESP8266 DeepSleep functionality and only outputs to console.  This
-will be the base of the upcoming MQTT branch which will send data influxdb/grafana server.
-- *MQTT*: **FUTURE BRANCH** starting from *DeepSleep* branch
-- *StringJson*: Predecessor to *ArduinoJson* code and performs the same function using normal string functions.
-- *ThingSpeak*: Written at the request of another individual and only includes the LM393 rain sensor.  Data collection works
-but ThingSpeak data transfer has not been tested.
-- *WifiManager*: Copy of master branch to test setup of the WiFiManager library to remove need to hard code WIFI settings
+will be the base of the *InfluxDB* branch which will send data influxdb/grafana server.
+- *StringJson*: Predecessor to *ArduinoJson* code and performs the same function using normal string functions. ***Kept only for reference, won't be used in final project***
+- *ThingSpeak*: Written at the request of another individual and includes the LM393 rain sensor.  Data collection works
+but ThingSpeak data transfer has not been tested. ***Kept only for reference, won't be used in final project, but code submissions of corrected code will be considered***
 
 ***The power portion of the circuit has not been tested.***
 
-Uses libraries from Adafruit, Adi Dax, Sparkfun, Christopher Laws and various individual contributers to the arduino
-library ecosystem
+Uses libraries from Adafruit, Adi Dax, Sparkfun, Christopher Laws and various individual contributers to the arduino library ecosystem
 
 Common Downloaded Libraries
 - DHT11 - [https://github.com/adafruit/DHT-sensor-library](https://github.com/adafruit/DHT-sensor-library.git)
